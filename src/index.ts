@@ -1,2 +1,2 @@
-import "observer/example";
-import "events/index";
+import "events";
+import "observer";
