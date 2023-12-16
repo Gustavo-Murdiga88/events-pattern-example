@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts --format cjs,esm",
-    "build:esm": "tsup src --format esm,cjs"
+    "build": "tsup src/index.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
+    "build:esm": "tsup src --format esm,cjs --dts"
   },
   "keywords": [],
   "author": "",
