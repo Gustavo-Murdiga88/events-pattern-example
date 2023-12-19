@@ -1,8 +1,8 @@
 import { Email, EmailObservers } from "./email";
 import { Message, MessagesObservers } from "./messages";
 
-const notifications = new EmailObservers("send-emails");
-const messages = new MessagesObservers("send-messages");
+const notifications = new EmailObservers();
+const messages = new MessagesObservers();
 
 const email = new Email({
 	content: "itaque voluptas aut",

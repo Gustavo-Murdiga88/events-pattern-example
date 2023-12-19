@@ -4,12 +4,16 @@
     "module": "ESNext",
     "moduleResolution": "Node",                               
     "rootDir": ".",                                 
-    "baseUrl": "./src",                                  
-    "outDir": "./dist",                                  
+    "baseUrl": ".",                                  
+    "outDir": "./dist",                   
+    "paths": {
+      "@/*": ["src/*"]
+    },               
     "esModuleInterop": true,                             
     "forceConsistentCasingInFileNames": true,            
     "strict": true,                                     
     "strictNullChecks": true,                         
-    "skipLibCheck": true                                 
+    "skipLibCheck": true,                      
+    "types": ["vitest/globals"]
   }
 }

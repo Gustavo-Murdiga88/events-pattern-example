@@ -124,9 +124,7 @@ eventRoot.unsubscribe(SendEmail.name);
 // src/observer/observer-root.ts
 var Observer = class {
   events = [];
-  eventRootName;
-  constructor(eventRootName) {
-    this.eventRootName = eventRootName;
+  constructor() {
   }
   notify() {
     if (this.events.length === 0) {
@@ -158,20 +156,16 @@ var Email2 = class extends Entity {
   constructor(props) {
     super(props);
   }
-  notify(eventRoot2) {
+  notify() {
     console.log({
       email: this.props.email,
       content: this.props.content,
       title: this.props.title,
-      to: this.props.to,
-      eventRootName: eventRoot2.eventRootName
+      to: this.props.to
     });
   }
 };
 var EmailObservers = class extends Observer {
-  constructor(rootName) {
-    super(rootName);
-  }
 };
 
 // src/observer/messages.ts
@@ -180,23 +174,19 @@ var Message = class extends Entity {
   constructor(props) {
     super(props);
   }
-  notify(eventRoot2) {
+  notify() {
     console.log({
       number: this.props.number,
-      contactName: this.props.contactName,
-      eventRootName: eventRoot2.eventRootName
+      contactName: this.props.contactName
     });
   }
 };
 var MessagesObservers = class extends Observer {
-  constructor(rootName) {
-    super(rootName);
-  }
 };
 
 // src/observer/index.ts
-var notifications = new EmailObservers("send-emails");
-var messages = new MessagesObservers("send-messages");
+var notifications = new EmailObservers();
+var messages = new MessagesObservers();
 var email = new Email2({
   content: "itaque voluptas aut",
   email: "johndoe@johndoe.com",

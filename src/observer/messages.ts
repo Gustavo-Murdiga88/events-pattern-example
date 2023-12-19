@@ -1,29 +1,24 @@
-import { Entity } from "core/entity";
-import { IEvent, Observer } from "./observer-root";
+import { Entity } from "@/core/entity";
+import { IObserver, Observer } from "./observer-root";
 
 type MessageProps = {
 	number: string;
 	contactName: string;
 };
 
-export class Message extends Entity<MessageProps> implements IEvent {
+export class Message extends Entity<MessageProps> implements IObserver {
 	name = "event-message";
 
 	constructor(props: MessageProps) {
 		super(props);
 	}
 
-	notify(eventRoot: Observer): void {
+	notify(): void {
 		console.log({
 			number: this.props.number,
 			contactName: this.props.contactName,
-			eventRootName: eventRoot.eventRootName,
 		});
 	}
 }
 
-export class MessagesObservers extends Observer {
-	constructor(rootName: string) {
-		super(rootName);
-	}
-}
+export class MessagesObservers extends Observer {}

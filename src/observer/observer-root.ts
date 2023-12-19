@@ -1,20 +1,16 @@
-export interface IEventRoot {
-	events: IEvent[]; // eslint-disable-line
+export interface IObserverRoot {
+	events: IObserver[]; // eslint-disable-line
 }
 
-export interface IEvent {
+export interface IObserver {
 	name: string;
-	notify(entity: IEventRoot): void;
+	notify(entity: IObserverRoot): void;
 }
 
-export class Observer implements IEventRoot {
-	events: IEvent[] = [];
+export class Observer implements IObserverRoot {
+	events: IObserver[] = [];
 
-	eventRootName: string;
-
-	constructor(eventRootName: string) {
-		this.eventRootName = eventRootName;
-	}
+	constructor() {}
 
 	notify(): void {
 		if (this.events.length === 0) {
@@ -26,7 +22,7 @@ export class Observer implements IEventRoot {
 		});
 	}
 
-	attach(event: IEvent): void {
+	attach(event: IObserver): void {
 		const eventIncluded = this.events.includes(event);
 
 		if (eventIncluded) {
@@ -36,7 +32,7 @@ export class Observer implements IEventRoot {
 		this.events.push(event);
 	}
 
-	delete(event: IEvent): void {
+	delete(event: IObserver): void {
 		const indexEvent = this.events.indexOf(event);
 
 		if (indexEvent === -1) {

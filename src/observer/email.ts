@@ -1,5 +1,5 @@
-import { Entity } from "core/entity";
-import { IEvent, Observer } from "./observer-root";
+import { Entity } from "@/core/entity";
+import { IObserver, Observer } from "./observer-root";
 
 type EmailProps = {
 	email: string;
@@ -8,26 +8,21 @@ type EmailProps = {
 	title: string;
 };
 
-export class Email extends Entity<EmailProps> implements IEvent {
+export class Email extends Entity<EmailProps> implements IObserver {
 	name = "email-event";
 
 	constructor(props: EmailProps) {
 		super(props);
 	}
 
-	notify(eventRoot: Observer): void {
+	notify(): void {
 		console.log({
 			email: this.props.email,
 			content: this.props.content,
 			title: this.props.title,
 			to: this.props.to,
-			eventRootName: eventRoot.eventRootName,
 		});
 	}
 }
 
-export class EmailObservers extends Observer {
-	constructor(rootName: string) {
-		super(rootName);
-	}
-}
+export class EmailObservers extends Observer {}

@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
-    "build:esm": "tsup src --format esm,cjs --dts"
+    "build:exec": "tsup src/index.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build:esm": "tsup src --format esm,cjs --dts",
+    "test:e2e":"vitest --config ./vitest.e2e.config.ts",
+    "test:watch": "vitest",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +19,8 @@
     "@gm-dev/eslint-config": "^1.0.25",
     "tsup": "^8.0.1",
     "tsx": "^4.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.0.4"
   }
 }
